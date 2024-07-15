@@ -24,10 +24,9 @@ export default function Listing() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [contact, setContact] = useState(false); 
+  const [contact, setContact] = useState(false);
   const params = useParams();
-  const {currentUser} = useSelector((state) => state.user);
-
+  const { currentUser } = useSelector((state) => state.user);
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -107,8 +106,7 @@ export default function Listing() {
               </p>
               {listing.offer && (
                 <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                  ${+listing.regularPrice - +listing.discountPrice}
-                </p>
+${+listing.regularPrice - +listing.discountPrice} OFF                </p>
               )}
             </div>
             <p className='text-slate-800'>
@@ -138,12 +136,13 @@ export default function Listing() {
               </li>
             </ul>
             {currentUser && listing.userRef !== currentUser._id && !contact && (
-              <button onClick={()=>setContact(true)} className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'>
-                Contact landlord
+              <button
+              onClick={() => setContact(true)}
+              className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+            >                Contact landlord
               </button>
             )}
-            {contact && <Contact listing={listing}/>}
-          </div>
+            {contact && <Contact listing={listing} />}          </div>
         </div>
       )}
     </main>
